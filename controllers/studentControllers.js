@@ -28,5 +28,42 @@ function studentLogin(req, res, next) {
   });
 }
 
+// Listing All Students Controller
+function studentList(req, res, next) {
+  Student.find({}, (err, students) => {
+    if (err) return next(err);
+    return res.status(200).json({ student: students });
+  });
+}
+
+// Attendence Controller
+function studentAttendence(req, res, next) {
+  req.body.Ispresent = true;
+  const id = req.params.id;
+  Student.findByIdAndUpdate(id, req.body, { new: true }, (err, student) => {
+    if (err) return next(err);
+    return res.status(200).json({ student: student });
+  });
+}
+
+// Student Status Controller
+function studentStatus(req, res, next) {
+  console.log(req.params.id, "id");
+  Student.findById(req.params.id, (err, student) => {
+    if (err) return next(err);
+    if (!student)
+      return res
+        .status(401)
+        .json({ student: "Student Not Found With This Id" });
+  });
+  return res.status(200).json({ studentstatus: student });
+}
+
 // Exporting The Controller
-module.exports = { studentRegistration, studentLogin };
+module.exports = {
+  studentRegistration,
+  studentLogin,
+  studentList,
+  studentAttendence,
+  studentStatus
+};

@@ -24,6 +24,10 @@ const studentSchema = new schema(
       minlength: 4,
       required: true
     },
+    class: {
+      type: Number,
+      required: true
+    },
     Ispresent: { type: Boolean, default: false }
   },
   { timestamps: true }
