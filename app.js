@@ -7,6 +7,7 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 
 // All Requires Of The Routing Section
+var teacherRouter = require("./routes/teacherRouter");
 var studentRouter = require("./routes/studentRouter");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -52,6 +53,7 @@ mongoose.connect(
 );
 
 // Providing The Api Paths
+app.use("/api/v1/teacher", teacherRouter);
 app.use("/api/v1/student", studentRouter);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);

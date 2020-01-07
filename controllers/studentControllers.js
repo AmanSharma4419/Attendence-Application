@@ -6,25 +6,25 @@ var auth = require("../utils/auth");
 function studentRegistration(req, res, next) {
   Student.create(req.body, (err, registredStudent) => {
     if (err) return next(err);
-    res.status(200).json({ student: registredStudent });
+    return res.status(200).json({ student: registredStudent });
   });
 }
 
 // Login Controller
 function studentLogin(req, res, next) {
   const { email, password } = req.body;
-  Student.findOne({ email }, (err, loggedinStudent) => {
+  Student.findOne({ email }, (err, loggedInStudent) => {
     if (err) return next(err);
-    if (!loggedinStudent) {
+    if (!loggedInStudent) {
       return res
-        .status(402)
+        .status(401)
         .json({ student: "Student Not Found With This Email" });
     }
-    if (!loggedinStudent.confirmPassword(password)) {
-      return res.status(402).json({ student: "Password Is Not Correct" });
+    if (!loggedInStudent.confirmPassword(password)) {
+      return res.status(401).json({ student: "Password Is Not Correct" });
     }
     var token = auth.genToken(email);
-    return res.status(200).json({ loggedinStudent, token });
+    return res.status(200).json({ loggedInStudent, token });
   });
 }
 
