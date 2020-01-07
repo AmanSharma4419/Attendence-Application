@@ -1,5 +1,12 @@
 import React from "react";
+
+import RegisterStudent from "./components/RegisterStudent";
+
 function App() {
-  return <h1>helloReact</h1>;
+  return (
+    <React.Fragment>
+      <RegisterStudent />
+    </React.Fragment>
+  );
 }
 export default App;
