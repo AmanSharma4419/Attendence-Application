@@ -46,9 +46,12 @@ mongoose.connect(
   "mongodb://localhost:27017/Attendence_Application",
   { useNewUrlParser: true },
   err => {
-    err
-      ? console.log("Error While Establishing The Connection With Database")
-      : console.log("Connected To DB Sucessfully");
+    if (err) {
+      console.log(err, "Not Connected To DB");
+    } else {
+      console.log("Connected Sucessfully TO DB");
+      require("./utils/seed");
+    }
   }
 );
 
