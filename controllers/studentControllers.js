@@ -1,5 +1,6 @@
 // Requring The Student Schema
 var Student = require("../models/studentSchema");
+var auth = require("../utils/auth");
 
 // Registration Controller
 function studentRegistration(req, res, next) {
@@ -22,7 +23,8 @@ function studentLogin(req, res, next) {
     if (!loggedinStudent.confirmPassword(password)) {
       return res.status(402).json({ student: "Password Is Not Correct" });
     }
-    return res.status(200).json(loggedinStudent);
+    var token = auth.genToken(email);
+    return res.status(200).json({ loggedinStudent, token });
   });
 }
 

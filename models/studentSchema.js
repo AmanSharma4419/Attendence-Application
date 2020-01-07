@@ -16,14 +16,15 @@ const studentSchema = new schema(
     email: {
       type: String,
       minlength: 5,
-      unique:true,
+      unique: true,
       required: true
     },
     password: {
       type: String,
       minlength: 4,
       required: true
-    }
+    },
+    Ispresent: { type: Boolean, default: false }
   },
   { timestamps: true }
 );
