@@ -7,6 +7,7 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 
 // All Requires Of The Routing Section
+var studentRouter = require("./routes/studentRouter");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
@@ -51,9 +52,9 @@ mongoose.connect(
 );
 
 // Providing The Api Paths
+app.use("/api/v1/student", studentRouter);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
