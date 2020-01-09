@@ -2,6 +2,7 @@ const Teacher = require("../models/teacherSchema");
 const auth = require("../utils/auth");
 
 function teacherRegistration(req, res, next) {
+  console.log("hello");
   Teacher.create(req.body, (err, registeredTeacher) => {
     if (err) return next(err);
     return res.status(200).json({ teacher: registeredTeacher });

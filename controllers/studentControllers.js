@@ -55,8 +55,8 @@ function studentStatus(req, res, next) {
       return res
         .status(401)
         .json({ student: "Student Not Found With This Id" });
+    return res.status(200).json({ studentstatus: student });
   });
-  return res.status(200).json({ studentstatus: student });
 }
 
 // Exporting The Controller

@@ -25,8 +25,8 @@ const studentSchema = new schema(
       required: true
     },
     class: {
-      type: Number,
-      required: true
+      type: Number
+      // required: true
     },
     Ispresent: { type: Boolean, default: false }
   },

@@ -1,13 +1,11 @@
 import React from "react";
 
-class RegisterStudent extends React.Component {
+class LoginTeacher extends React.Component {
   constructor() {
     super();
     this.state = {
-      username: "",
       email: "",
-      password: "",
-      studentclass: ""
+      password: ""
     };
   }
 
@@ -19,30 +17,25 @@ class RegisterStudent extends React.Component {
   };
 
   handleRegister = () => {
-    var studentData = {
-      name: this.state.username,
+    var teacherData = {
       email: this.state.email,
       password: this.state.password
     };
-    fetch("http://localhost:3000/api/v1/student/register", {
+    fetch("http://localhost:3000/api/v1/teacher/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(studentData)
+      body: JSON.stringify(teacherData)
     })
       .then(res => res.json())
-      .then(this.props.history.push("/login"));
+      .then(teacher => {
+        console.log(teacher);
+      });
   };
   render() {
     return (
       <React.Fragment>
-        <input
-          type="text"
-          placeholder="Enter Name"
-          name="username"
-          onChange={this.onKeyUp}
-        />
         <input
           type="email"
           placeholder="Enter Email"
@@ -55,16 +48,10 @@ class RegisterStudent extends React.Component {
           name="password"
           onChange={this.onKeyUp}
         />
-        <input
-          type="number"
-          placeholder="Enter Class"
-          name="studentclass"
-          onChange={this.onChange}
-        />
-        <button onClick={this.handleRegister}>Register</button>
+        <button onClick={this.handleRegister}>Login</button>
       </React.Fragment>
     );
   }
 }
 
-export default RegisterStudent;
+export default LoginTeacher;

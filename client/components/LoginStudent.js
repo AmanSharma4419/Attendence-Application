@@ -1,30 +1,26 @@
 import React from "react";
 
-class RegisterStudent extends React.Component {
+class LoginStudent extends React.Component {
   constructor() {
     super();
     this.state = {
-      username: "",
       email: "",
-      password: "",
-      studentclass: ""
+      password: ""
     };
   }
-
-  onKeyUp = e => {
+  onKeyup = e => {
     const { name, value } = e.target;
     this.setState({
       [name]: value
     });
   };
-
-  handleRegister = () => {
+  handleLogin = () => {
     var studentData = {
-      name: this.state.username,
       email: this.state.email,
       password: this.state.password
     };
-    fetch("http://localhost:3000/api/v1/student/register", {
+    console.log(studentData);
+    fetch("http://localhost:3000/api/v1/student/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -32,39 +28,30 @@ class RegisterStudent extends React.Component {
       body: JSON.stringify(studentData)
     })
       .then(res => res.json())
-      .then(this.props.history.push("/login"));
+      .then(loggedInstudent => {
+        console.log(loggedInstudent);
+        localStorage.setItem("studentId", loggedInstudent.loggedInStudent._id);
+      });
   };
   render() {
     return (
       <React.Fragment>
         <input
           type="text"
-          placeholder="Enter Name"
-          name="username"
-          onChange={this.onKeyUp}
-        />
-        <input
-          type="email"
           placeholder="Enter Email"
           name="email"
-          onChange={this.onKeyUp}
+          onChange={this.onKeyup}
         />
         <input
           type="password"
           placeholder="Enter Password"
           name="password"
-          onChange={this.onKeyUp}
+          onChange={this.onKeyup}
         />
-        <input
-          type="number"
-          placeholder="Enter Class"
-          name="studentclass"
-          onChange={this.onChange}
-        />
-        <button onClick={this.handleRegister}>Register</button>
+        <button onClick={this.handleLogin}>Login</button>
       </React.Fragment>
     );
   }
 }
 
-export default RegisterStudent;
+export default LoginStudent;

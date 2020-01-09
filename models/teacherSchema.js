@@ -8,7 +8,6 @@ const teacherSchema = new schema(
     name: {
       type: String,
       minlength: 4,
-      required: true
     },
     email: {
       type: String,
@@ -18,9 +17,9 @@ const teacherSchema = new schema(
     },
     subject: {
       type: String,
-      minlength: 4,
-      unique: true,
-      required: true
+      // minlength: 4,
+      unique: true
+      // required: true
     },
     password: {
       type: String,
