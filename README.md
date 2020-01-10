@@ -2,7 +2,7 @@
 
 ## Github Link
 
-[github](https://github.com/AmanSharma4419)
+[github](https://github.com/AmanSharma4419/Attendence-Application)
 
 ## Twitter Link
 
@@ -36,3 +36,9 @@
       password: "aman12345",
       subject: "Maths"
 ```
+
+## Additional Info About Project
+
+1. This project having the mongodb connection locally.Mongodb is not shifted to cloud
+
+2. That project is live on the code-sandbox link given below
