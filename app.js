@@ -43,7 +43,7 @@ if (process.env.NODE_ENV === "development") {
 
 // Creating The Mongoose Connection
 mongoose.connect(
-  "mongodb+srv://Aman_Sharma:mongo1234@cluster0-wnjzz.mongodb.net/test?retryWrites=true&w=majority",
+  "mongodb://localhost:27017/Attendence_Application",
   { useNewUrlParser: true },
   err => {
     if (err) {
