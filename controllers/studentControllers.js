@@ -4,6 +4,9 @@ var auth = require("../utils/auth");
 
 // Registration Controller
 function studentRegistration(req, res, next) {
+  if (!req.body.name || !req.body.password || !req.body.email) {
+    return res.json("Error");
+  }
   Student.create(req.body, (err, registredStudent) => {
     if (err) return next(err);
     return res.status(200).json({ student: registredStudent });

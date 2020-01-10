@@ -17,8 +17,13 @@ class App extends React.Component {
     return (
       <div>
         <Router>
-          <Route exact path="/" component={LoginStudent} />
-          <Route path="/LoginTeacher" component={RegisterStudent} />
+          <Route exact path="/" component={Homepage} />
+          <Route path="/student-registeration" component={RegisterStudent} />
+          <Route path="/teacher-registeration" component={RegisterTeacher} />
+          <Route path="/student-login" component={LoginStudent} />
+          <Route path="/teacher-login" component={LoginTeacher} />
+          <Route path="/student-dashboard" component={StudentDashboard} />
+          <Route path="/teacher-dashboard" component={TeacherDashboard} />
         </Router>
       </div>
     );

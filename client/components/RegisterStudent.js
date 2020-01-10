@@ -1,5 +1,5 @@
 import React from "react";
-
+import { withRouter } from "react-router-dom";
 class RegisterStudent extends React.Component {
   constructor() {
     super();
@@ -30,8 +30,9 @@ class RegisterStudent extends React.Component {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(studentData)
-    }).then(res => res.json());
-    // .then(this.props.history.push("/login"));
+    })
+      .then(res => res.json())
+      .then(this.props.history.push("/student-login"));
   };
   render() {
     return (
@@ -67,4 +68,4 @@ class RegisterStudent extends React.Component {
   }
 }
 
-export default RegisterStudent;
+export default withRouter(RegisterStudent);

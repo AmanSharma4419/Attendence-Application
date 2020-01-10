@@ -19,7 +19,6 @@ class LoginStudent extends React.Component {
       email: this.state.email,
       password: this.state.password
     };
-    console.log(studentData);
     fetch("http://localhost:3000/api/v1/student/login", {
       method: "POST",
       headers: {
@@ -29,10 +28,11 @@ class LoginStudent extends React.Component {
     })
       .then(res => res.json())
       .then(loggedInstudent => {
-        console.log(loggedInstudent);
         localStorage.setItem("studentId", loggedInstudent.loggedInStudent._id);
-      });
+      })
+      .then(this.props.history.push("/student-dashboard"));
   };
+
   render() {
     return (
       <React.Fragment>

@@ -8,7 +8,7 @@ class TeacherDashboard extends React.Component {
     };
   }
   toLogout = () => {
-    this.props.history.push();
+    this.props.history.push("/");
   };
   componentDidMount() {
     fetch("http://localhost:3000/api/v1/student/studentList", {

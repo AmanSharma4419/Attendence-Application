@@ -31,8 +31,12 @@ class RegisterTeacher extends React.Component {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(teacherData)
-    }).then(res => res.json());
-    // .then(this.props.history.push("/teacherLogin"));
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+      })
+      .then(this.props.history.push("/teacher-login"));
   };
   render() {
     return (

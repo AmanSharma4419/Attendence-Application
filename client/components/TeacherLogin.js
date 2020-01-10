@@ -29,9 +29,7 @@ class LoginTeacher extends React.Component {
       body: JSON.stringify(teacherData)
     })
       .then(res => res.json())
-      .then(teacher => {
-        console.log(teacher);
-      });
+      .then(this.props.history.push("/teacher-dashboard"));
   };
   render() {
     return (

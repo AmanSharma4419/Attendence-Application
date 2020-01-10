@@ -9,7 +9,7 @@ class StudentDashboard extends React.Component {
   }
   toLogout = () => {
     localStorage.clear();
-    this.props.history.push();
+    this.props.history.push("/");
   };
   componentDidMount() {
     var id = localStorage.getItem("studentId");
