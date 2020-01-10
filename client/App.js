@@ -1,6 +1,7 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
+import Homepage from "./components/Homepage";
 import RegisterStudent from "./components/RegisterStudent";
 import LoginStudent from "./components/LoginStudent";
 import RegisterTeacher from "./components/RegisterTeacher";
@@ -14,14 +15,12 @@ class App extends React.Component {
   }
   render() {
     return (
-      <React.Fragment>
-        <BrowserRouter>
-          <LoginStudent />
-          <Switch>
-            <Route exact path="/login" component={LoginTeacher} />
-          </Switch>
-        </BrowserRouter>
-      </React.Fragment>
+      <div>
+        <Router>
+          <Route exact path="/" component={LoginStudent} />
+          <Route path="/LoginTeacher" component={RegisterStudent} />
+        </Router>
+      </div>
     );
   }
 }

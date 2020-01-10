@@ -7,6 +7,10 @@ class StudentDashboard extends React.Component {
       StudentAttendence: ""
     };
   }
+  toLogout = () => {
+    localStorage.clear();
+    this.props.history.push();
+  };
   componentDidMount() {
     var id = localStorage.getItem("studentId");
     fetch(`http://localhost:3000/api/v1/student/singlestudent/${id}`, {
@@ -26,9 +30,11 @@ class StudentDashboard extends React.Component {
   render() {
     return (
       <div>
-        <h1>Attendence Status</h1>
+        <h1>Student Dashboard</h1>
+        <h2>Attendence Status</h2>
         <hr />
         {this.state.StudentAttendence ? <h1>Present</h1> : <h1>Absent</h1>}
+        <button onClick={this.toLogout}>Logout</button>
       </div>
     );
   }

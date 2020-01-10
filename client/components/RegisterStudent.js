@@ -30,13 +30,13 @@ class RegisterStudent extends React.Component {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(studentData)
-    })
-      .then(res => res.json())
-      .then(this.props.history.push("/login"));
+    }).then(res => res.json());
+    // .then(this.props.history.push("/login"));
   };
   render() {
     return (
       <React.Fragment>
+        <h1>Student Register</h1>
         <input
           type="text"
           placeholder="Enter Name"

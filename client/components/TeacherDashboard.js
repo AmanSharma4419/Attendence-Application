@@ -7,6 +7,9 @@ class TeacherDashboard extends React.Component {
       allStudents: ""
     };
   }
+  toLogout = () => {
+    this.props.history.push();
+  };
   componentDidMount() {
     fetch("http://localhost:3000/api/v1/student/studentList", {
       method: "GET",
@@ -24,6 +27,7 @@ class TeacherDashboard extends React.Component {
     return (
       <React.Fragment>
         <div>
+          <button onClick={this.toLogout}>Logout</button>
           <h1>TeacherDashboard</h1>
           {this.state.allStudents &&
             this.state.allStudents.map((stud, i) => {

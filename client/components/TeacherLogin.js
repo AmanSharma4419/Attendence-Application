@@ -36,6 +36,7 @@ class LoginTeacher extends React.Component {
   render() {
     return (
       <React.Fragment>
+        <h1>Teacher Login</h1>
         <input
           type="email"
           placeholder="Enter Email"
